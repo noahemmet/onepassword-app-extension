@@ -101,6 +101,14 @@ static NSString *const AppExtensionWebViewPageDetails = @"pageDetails";
 #endif
 }
 
+- (NSExtensionItem *)extensionItemForURLString:(NSString *)urlString {
+    NSDictionary *item = @{ AppExtensionVersionNumberKey: VERSION_NUMBER, AppExtensionURLStringKey: urlString };
+    NSItemProvider *itemProvider = [[NSItemProvider alloc] initWithItem:item typeIdentifier:kUTTypeAppExtensionFindLoginAction];
+    NSExtensionItem *extensionItem = [[NSExtensionItem alloc] init];
+    extensionItem.attachments = @[ itemProvider ];
+    return extensionItem;
+}
+
 #pragma mark - New User Registration
 
 - (void)storeLoginForURLString:(NSString *)URLString loginDetails:(NSDictionary *)loginDetailsDictionary passwordGenerationOptions:(NSDictionary *)passwordGenerationOptions forViewController:(UIViewController *)viewController sender:(id)sender completion:(void (^)(NSDictionary *loginDictionary, NSError *error))completion {

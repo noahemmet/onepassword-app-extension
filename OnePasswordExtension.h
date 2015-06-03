@@ -87,6 +87,8 @@
  */
 - (void)findLoginForURLString:(NSString *)URLString forViewController:(UIViewController *)viewController sender:(id)sender completion:(void (^)(NSDictionary *loginDictionary, NSError *error))completion;
 
+- (NSExtensionItem *)extensionItemForURLString:(NSString *)urlString;
+
 /*!
  Create a new login within 1Password and allow the user to generate a new password before saving.
 
